@@ -1,9 +1,6 @@
-import { DateTime } from 'luxon'
-
 addEventListener('fetch', event => {
-  const today = DateTime.now().day
   const data = {
-    hello: `Hello worker on ${today}!`,
+    hello: 'world',
   }
   // event.respondWith(handleRequest(event.request))
   const json = JSON.stringify(data, null, 2)
@@ -24,8 +21,7 @@ async function handleRequest(request) {
   //request.method
   //request.url
   //request.headers
-  const today = DateTime.now().day
-  return new Response(`Hello worker on ${today}!`, {
+  return new Response(`Hello worker !`, {
     headers: { 'content-type': 'text/plain' },
   })
 }
