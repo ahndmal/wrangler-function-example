@@ -1,14 +1,17 @@
 import { DateTime } from 'luxon'
-import env from 'dotenv'
 
 addEventListener('fetch', event => {
   // const latitude = window.position.coords.latitude
   // const longitude = window.position.coords.longitude
 
-  env.config()
+  // const result = dotenv.config()
+  // if (result.error) {
+  //   throw result.error
+  // }
+  // console.log(result.parsed)
 
-  const locationiqUrl = `https://eu1.locationiq.com/v1/search.php?key=${API_KEY}&q=Lebedyn&format=json`
-  console.log(process.env.API_LAYER_KEY)
+  // console.log(process.env)
+  // const locationiqUrl = `https://eu1.locationiq.com/v1/search.php?key=${API_KEY}&q=Lebedyn&format=json`
 
   const today = DateTime.now().toString()
   const data = {
@@ -32,7 +35,8 @@ async function handleRequest(request) {
   const resp = await fetch('https://api.thecatapi.com/v1/breeds')
   const respJson = await resp.json()
   const today = DateTime.now()
-  return new Response(respJson, {
+  const finalJson = JSON.stringify({ date: today, breeds: respJson })
+  return new Response(finalJson, {
     headers: {
       'content-type': 'application/json;charset=UTF-8',
     },
