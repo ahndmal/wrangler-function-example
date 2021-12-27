@@ -1,8 +1,22 @@
 name = "worker-db-1"
 type = "javascript"
+#type = "webpack"
 
-account_id = ""
+account_id = "934702807263b0d7b8e85cc9f2d2a2ab"
 workers_dev = true
 route = ""
 zone_id = ""
 compatibility_date = "2021-12-27"
+
+[build.upload]
+format = "modules"
+dir = "./src"
+main = "./worker.js" # becomes "./src/worker.js"
+
+[[build.upload.rules]]
+type = "ESModule"
+globs = "**/*.js"
+
+# Uncomment if you have a build script.
+# [build]
+# command = "npm run build"
